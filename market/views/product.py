@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.views import generic
+from market.models import Product
 
 
-def index(request, id):
-    return HttpResponse('Product page. Product ID is %s' % id)
+class IndexView(generic.DetailView):
+    model = Product
+    template_name = 'product/index.html'

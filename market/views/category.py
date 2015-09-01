@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.views import generic
+from market.models import Category
 
 
-def products_list(request, id):
-    return HttpResponse('Product of category list page. Category ID is %s' % id)
+class ProductsView(generic.DetailView):
+    model = Category
+    template_name = 'category/products.html'

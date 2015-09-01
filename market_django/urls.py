@@ -17,8 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('market.urls.landing')),
+    url(r'^', include('market.urls.landing', namespace='landing')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^product/', include('market.urls.product')),
-    url(r'^category/', include('market.urls.category')),
+    url(r'^product/', include('market.urls.product', namespace='product')),
+    url(r'^category/', include('market.urls.category', namespace='category')),
 ]

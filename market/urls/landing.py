@@ -3,5 +3,6 @@ from market.views import landing
 
 
 urlpatterns = patterns('/',
-    url(r'^$', landing.index, name='main_page'),
+    url(r'^$', landing.index, name='index'),
+    url(r'^catalog/$', landing.CatalogView.as_view(), name='catalog'),
 )

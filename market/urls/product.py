@@ -3,5 +3,5 @@ from market.views import product
 
 
 urlpatterns = patterns('',
-    url(r'^(?P<id>\d+)/$', product.index, name='product_index'),
+    url(r'^(?P<pk>\d+)/$', product.IndexView.as_view(), name='index'),
 )

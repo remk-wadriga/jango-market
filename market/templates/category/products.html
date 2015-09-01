@@ -1,0 +1,7 @@
+<h1>Products of category "{{ category }}"</h1>
+
+<ul>
+    {% for product in category.product_set.all %}
+        <li><a href="{% url 'product:index' product.id %}">{{ product }}</a></li>
+    {% endfor %}
+</ul>
