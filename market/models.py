@@ -49,6 +49,12 @@ class Unit(models.Model):
 
 
 class Product(models.Model):
+    TYPE_DISABLED = 0
+    TYPE_ENABLED = 1
+    TYPE_DELETED = 2
+
+    TYPES = [(TYPE_DISABLED, 'Неактивен'), (TYPE_ENABLED, 'Активен'), (TYPE_DELETED, 'Удалён')]
+
     name = models.CharField(max_length=255)
     vendor = models.ForeignKey(Vendor)
     categories = models.ManyToManyField(Category)
@@ -58,6 +64,7 @@ class Product(models.Model):
     unit = models.ForeignKey(Unit)
     min_count = models.FloatField(blank=True)
     description = models.TextField(blank=True)
+    status = models.IntegerField(default=1, choices=TYPES)
     date_added = models.DateTimeField(auto_now=True)
     date_updated = models.DateTimeField(blank=True)
 
@@ -72,7 +79,7 @@ class ProductProperty(models.Model):
 
 
 class Image(models.Model):
-    path = models.ImageField(upload_to='market/static/img', max_length=400)
+    path = models.ImageField(upload_to='market/media/products', max_length=400)
     name = models.CharField(max_length=255)
     title = models.CharField(max_length=255, blank=True)
     product = models.ForeignKey(Product)
