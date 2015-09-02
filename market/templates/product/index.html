@@ -1,1 +1,10 @@
 <h1>{{ product }}</h1>
+
+<ul>
+    <li><a href="{% url 'landing:index' %}">Home</a></li>
+    <li><a href="{% url 'landing:catalog' %}">Catalog</a></li>
+</ul>
+
+<img width="{{ product.miniature_image.width }}" height="{{ product.miniature_image.height }}" src="{{ product.miniature_image }}" />
+<br />
+<img width="{{ product.primary_image.width }}" height="{{ product.primary_image.height }}" src="{{ product.primary_image }}" />
