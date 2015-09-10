@@ -2,6 +2,11 @@
 
 <ul>
     {% for product in category.product_set.all %}
-        <li><a href="{% url 'product:index' product.id %}">{{ product }}</a></li>
+        <li>
+            <a href="{% url 'product:index' product.id %}">
+                <img width="{{ product.miniature_image.width }}" height="{{ product.miniature_image.height }}" src="{{ product.miniature_image }}" />
+                {{ product }}
+            </a>
+        </li>
     {% endfor %}
 </ul>

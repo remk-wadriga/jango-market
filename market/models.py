@@ -77,6 +77,10 @@ class Product(models.Model):
     def default_image():
         return settings.STATIC_URL + 'img/no_image.png'
 
+    @staticmethod
+    def default_miniature():
+        return settings.STATIC_URL + 'img/no_image_miniature.png'
+
     def primary_image(self):
         try:
             primary_size = ImageSize.objects.get(type=ImageSize.TYPE_PRIMARY)
@@ -91,7 +95,7 @@ class Product(models.Model):
             miniature_size = ImageSize.objects.get(type=ImageSize.TYPE_MINIATURE)
             img = self.image_set.get(size_id=miniature_size.id)
         except ObjectDoesNotExist:
-            img = self.default_image()
+            img = self.default_miniature()
 
         return img
 
